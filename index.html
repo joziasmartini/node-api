@@ -1,54 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    main {
-      margin: 0 auto;
-      width: 70%;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-    .post {
-      line-height: 24px;
-      margin: 10px;
-      padding: 10px;
-      display: block;
-    }
-    .title {
-      font-size: 1.6rem;
-      font-weight: bolder;
-    }
-  </style>
-</head>
-<body>
-  <main></main>
-</body>
-<script>
-  async function getContent() {
-    try {
-      const response = await fetch('http://localhost:8888/')
-      const { data } = await response.json()
-      console.log(data)
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
-      let output = ''
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      header h1 {
+        margin: 3rem 2rem 1rem;
+        text-align: center;
+      }
+      header p {
+        margin: 0rem 2rem 2rem;
+        text-align: center;
+        color: #333;
+      }
+      main {
+        margin: 0 auto;
+        width: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .post {
+        line-height: 24px;
+        margin: 10px;
+        padding: 2rem;
+        display: block;
+        background-color: #eee;
+      }
+      .title {
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-size: 1.6rem;
+        font-weight: bolder;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Blog</h1>
+      <p>An API that consumes another API</p>
+    </header>
+    <main></main>
+  </body>
+  <script>
+    async function getContent() {
+      try {
+        const response = await fetch("http://localhost:8888/");
+        const { data } = await response.json();
+        console.log(data);
 
-      data.forEach((post) => {
-        output += `<span class="post">
+        let output = "";
+
+        data.forEach((post) => {
+          output += `<span class="post">
           <span class="title">${post.title}</span>
           <br> ${post.body}
-          </span>`
-      })
+          </span>`;
+        });
 
-      document.querySelector('main').innerHTML = output
-    } catch (error) {
-      console.log(error)
+        document.querySelector("main").innerHTML = output;
+      } catch (error) {
+        console.log(error);
+      }
     }
-  }
 
-  getContent();
-</script>
+    getContent();
+  </script>
 </html>
