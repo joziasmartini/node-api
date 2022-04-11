@@ -4,7 +4,8 @@
   "description": "Consuming an API in Node.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start-server": "nodemon server.js",
+    "start-client": "live-server"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "live-server": "^1.2.1",
     "nodemon": "^2.0.12"
   }
 }
