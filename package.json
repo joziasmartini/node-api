@@ -1,7 +1,7 @@
 {
   "name": "node-api",
   "version": "1.0.0",
-  "description": "Consuming an API in Node.",
+  "description": "An API that consumes another API.",
   "main": "index.js",
   "scripts": {
     "start-server": "nodemon server.js",
